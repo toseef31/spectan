@@ -17,6 +17,7 @@ Route::get('/','frontend\HomeController@index');
 Route::group(['prefix' => 'spectan'], function () {
 Route::get('/blog','frontend\HomeController@blogs');
 Route::get('/blog-details/{id}','frontend\HomeController@blogDetails');
+Route::post('/contactUs','frontend\HomeController@contactUs');
 
 Route::get('/personal-returns', function () {
     return view('frontend.personal-returns');

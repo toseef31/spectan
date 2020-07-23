@@ -91,7 +91,7 @@ class AdminController extends Controller
 
        // dd($user);
 
-         return redirect('/dashboard');
+         return redirect('/dashboard/blogs');
 
      }
 

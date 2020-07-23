@@ -3,7 +3,7 @@
         Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
     -->
       <div class="logo" style="background: white;">
-        <a href="{{url('/dashboard/view_customers')}}" class="simple-text logo-mini" style="width: 60%;float: none;margin-left: 55px;margin-bottom: -16px;">
+        <a href="{{url('/dashboard/blogs')}}" class="simple-text logo-mini" style="width: 60%;float: none;margin-left: 55px;margin-bottom: -16px;">
           <div class="logo-image-small">
             <img src="{{asset('/frontend-assets/img/logo.png')}}" alt="Logo">
           </div>
@@ -38,53 +38,13 @@
               <p>Blogs</p>
             </a>
           </li>
-          <li class="{{ request()->is('dashboard/view_customers') ? 'active' : '' }}">
+          <!-- <li class="{{ request()->is('dashboard/view_customers') ? 'active' : '' }}">
             <a href="{{url('dashboard/view_customers')}}"  role="button" aria-expanded="false" aria-controls="admin">
               <i class="nc-icon nc-single-02"></i>
               <p>Clients</p>
             </a>
-            <!-- <ul class="collapse" id="customer">
-              <li><a href="{{url('dashboard/view_customers')}}">View Clients</a></li>
-            </ul> -->
-
-          </li>
-          <li class="{{ request()->is('dashboard/view_students') ? 'active' : '' }}">
-            <a href="{{url('dashboard/view_students')}}"  role="button" aria-expanded="false" aria-controls="admin">
-              <i class="nc-icon nc-circle-10"></i>
-              <p>Students</p>
-            </a>
-            <!-- <ul class="collapse" id="student">
-              <li><a href="{{url('dashboard/view_students')}}">View Students</a></li>
-            </ul> -->
-
-          </li>
-          <li class="{{ request()->is('dashboard/view_tutors') ? 'active' : '' }}">
-            <!-- <a href="#tutor"  data-toggle="collapse"  role="button" aria-expanded="false" aria-controls="admin"> -->
-            <a href="{{url('dashboard/view_tutors')}}" role="button" aria-expanded="false" aria-controls="admin">
-              <i class="nc-icon nc-badge"></i>
-              <p>Tutors</p>
-            </a>
-            <!-- <ul class="collapse" id="tutor">
-              <li><a href="{{url('dashboard/view_tutors')}}">View Tutors</a></li>
-            </ul> -->
-
-          </li>
-          <li class="{{ request()->is('dashboard/view_agreements') || request()->is('dashboard/awaiting_signature') || request()->is('dashboard/signed_agreements') ? 'active' : '' }}">
-            <a href="#aggrement"  data-toggle="collapse"  role="button" aria-expanded="false" aria-controls="manageJobs">
-              <i class="nc-icon nc-single-copy-04"></i>
-              <p>Agreements</p>
-            </a>
-            @if(request()->is('dashboard/view_agreements') || request()->is('dashboard/awaiting_signature') || request()->is('dashboard/signed_agreements'))
-            <ul class="collapse show" id="aggrement">
-            @else
-            <ul class="collapse" id="aggrement">
-            @endif
-              <li class="{{ request()->is('dashboard/view_agreements') ? 'active' : '' }}" style="display:block;"><a href="{{url('dashboard/view_agreements')}}">View Agreements</a></li>
-              <li class="{{ request()->is('dashboard/awaiting_signature') ? 'active' : '' }}" style="display:block;"><a href="{{url('dashboard/awaiting_signature')}}">Awaiting signature</a></li>
-              <li class="{{ request()->is('dashboard/signed_agreements') ? 'active' : '' }}" style="display:block;"><a href="{{url('dashboard/signed_agreements')}}">Signed</a></li>
-            </ul>
-          </li>
-         <li  class="{{ request()->is('dashboard/FAQ') ? 'active' : '' }}">
+          </li> -->
+         <!-- <li  class="{{ request()->is('dashboard/FAQ') ? 'active' : '' }}">
            <a class="" href="{{url('dashboard/FAQ')}}" role="button" aria-expanded="false" aria-controls="customer">
              <i class="nc-icon nc-diamond"></i>
              <p>FAQ</p>
@@ -92,31 +52,7 @@
            <ul class="collapse" id="faq">
              <li><a href="{{url('dashboard/customer-message')}}">FAQ</a></li>
            </ul>
-         </li>
-          <li class="{{ request()->is('dashboard/view_sessions') || request()->is('dashboard/occured_session') ? 'active' : '' }}">
-            <a href="{{url('dashboard/view_sessions')}}"   role="button" aria-expanded="false" aria-controls="admin">
-              <i class="nc-icon nc-bell-55"></i>
-              <p>Sessions</p>
-            </a>
-
-
-          </li>
-
-          <li class="{{ request()->is('dashboard/view_timesheets') || request()->is('dashboard/view_reports') ? 'active' : '' }}">
-            <a href="#timesheet" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="manageQuote">
-              <i class="nc-icon nc-money-coins"></i>
-              <p>Timesheets</p>
-            </a>
-            @if(request()->is('dashboard/view_timesheets') || request()->is('dashboard/view_reports'))
-            <ul class="collapse show" id="timesheet">
-            @else
-            <ul class="collapse" id="timesheet">
-            @endif
-              <li class="{{ request()->is('dashboard/view_timesheets') ? 'active' : '' }}" style="display:block;"><a href="{{url('dashboard/view_timesheets')}}">View Timesheets</a></li>
-              <li class="{{ request()->is('dashboard/view_reports') ? 'active' : '' }}" style="display:block;"><a href="{{url('dashboard/view_reports')}}">View Reports</a></li>
-            </ul>
-          </li>
-
+         </li> -->
           <!-- <li>
             <a class="" data-toggle="collapse" href="#blog" role="button" aria-expanded="false" aria-controls="customer">
               <i class="nc-icon nc-diamond"></i>
