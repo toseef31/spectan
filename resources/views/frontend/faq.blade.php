@@ -23,14 +23,15 @@
 		<div class="row align-items-center">
 			<div class="col-xl-12 col-lg-12">
 				<div class="about_text">
-					<p class="theme-blue-text"><strong>What is an Enrolled Agent?</strong></p>
-					<p>An Enrolled Agent (EA) is a federally-licensed tax practitioner who may represent taxpayers before the IRS when it comes to collections, audits, and appeals. EAs are granted unlimited practice rights to represent taxpayers before the IRS and are authorized to advise, represent, and prepare tax returns for individuals, partnerships, corporations, estates, trusts, and any other entities with tax-reporting requirements. Enrolled agents are the only federally-licensed tax practitioners who specialize in taxation and have unlimited rights to represent taxpayers before the IRS.</p>
+					{!! $faq->description !!}
+					<!-- <p class="theme-blue-text"><strong>What is an Enrolled Agent?</strong></p>
+					<p>An Enrolled Agent (EA) is a federally-licensed tax practitioner who may represent taxpayers before the IRS when it comes to collections, audits, and appeals. EAs are granted unlimited practice rights to represent taxpayers before the IRS and are authorized to advise, represent, and prepare tax returns for individuals, partnerships, corporations, estates, trusts, and any other entities with tax-reporting requirements. Enrolled agents are the only federally-licensed tax practitioners who specialize in taxation and have unlimited rights to represent taxpayers before the IRS.</p> -->
 				</div>
 			</div>
 		</div>
 		<hr>
 
-		<div class="row align-items-center">
+		<!-- <div class="row align-items-center">
 			<div class="col-xl-12 col-lg-12">
 				<div class="about_text">
 					<p class="theme-blue-text"><strong>What's the difference between Enrolled Agents and other tax professionals?</strong></p>
@@ -108,7 +109,7 @@
 				</div>
 			</div>
 		</div>
-		<hr>
+		<hr> -->
 	</div>
 </div>
 <!-- /about_info_area end  -->

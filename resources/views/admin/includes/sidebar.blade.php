@@ -22,6 +22,21 @@
               <p>Dashboard</p>
             </a>
           </li> -->
+          <li class="{{ request()->is('dashboard/view_business_return_quote') || request()->is('dashboard/awaiting_signature') || request()->is('dashboard/signed_agreements') ? 'active' : '' }}">
+            <a href="#quotes"  data-toggle="collapse"  role="button" aria-expanded="false" aria-controls="manageJobs">
+              <i class="nc-icon nc-single-copy-04"></i>
+              <p>Service</p>
+            </a>
+            @if(request()->is('dashboard/view_business_return_quote') || request()->is('dashboard/awaiting_signature') || request()->is('dashboard/signed_agreements'))
+            <ul class="collapse show" id="quotes">
+            @else
+            <ul class="collapse" id="quotes">
+            @endif
+              <li class="{{ request()->is('dashboard/view_business_return_quote') ? 'active' : '' }}" style="display:block;"><a href="{{url('dashboard/view_business_return_quote')}}">Business Return Quote</a></li>
+              <!-- <li class="{{ request()->is('dashboard/awaiting_signature') ? 'active' : '' }}" style="display:block;"><a href="{{url('dashboard/awaiting_signature')}}">Awaiting signature</a></li> -->
+              <!-- <li class="{{ request()->is('dashboard/signed_agreements') ? 'active' : '' }}" style="display:block;"><a href="{{url('dashboard/signed_agreements')}}">Signed</a></li> -->
+            </ul>
+          </li>
           <li class="{{ request()->is('dashboard/view_admins') ? 'active' : '' }}">
             <a href="{{url('dashboard/view_admins')}}"  role="button" aria-expanded="false" aria-controls="admin">
               <i class="nc-icon nc-single-02"></i>
@@ -38,21 +53,21 @@
               <p>Blogs</p>
             </a>
           </li>
-          <!-- <li class="{{ request()->is('dashboard/view_customers') ? 'active' : '' }}">
-            <a href="{{url('dashboard/view_customers')}}"  role="button" aria-expanded="false" aria-controls="admin">
-              <i class="nc-icon nc-single-02"></i>
-              <p>Clients</p>
+          <li class="{{ request()->is('dashboard/view_messages') ? 'active' : '' }}">
+            <a href="{{url('dashboard/view_messages')}}"  role="button" aria-expanded="false" aria-controls="admin">
+              <i class="nc-icon nc-bell-55"></i>
+              <p>Contact Us</p>
             </a>
-          </li> -->
-         <!-- <li  class="{{ request()->is('dashboard/FAQ') ? 'active' : '' }}">
+          </li>
+         <li  class="{{ request()->is('dashboard/FAQ') ? 'active' : '' }}">
            <a class="" href="{{url('dashboard/FAQ')}}" role="button" aria-expanded="false" aria-controls="customer">
              <i class="nc-icon nc-diamond"></i>
              <p>FAQ</p>
            </a>
-           <ul class="collapse" id="faq">
+           <!-- <ul class="collapse" id="faq">
              <li><a href="{{url('dashboard/customer-message')}}">FAQ</a></li>
-           </ul>
-         </li> -->
+           </ul> -->
+         </li>
           <!-- <li>
             <a class="" data-toggle="collapse" href="#blog" role="button" aria-expanded="false" aria-controls="customer">
               <i class="nc-icon nc-diamond"></i>

@@ -13,7 +13,7 @@
                 <span class="navbar-toggler-bar bar3"></span>
               </button>
             </div>
-            <a class="navbar-brand" href="#pablo">Tutors List</a>
+            <a class="navbar-brand" href="#pablo">Agreements List</a>
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-bar navbar-kebab"></span>
@@ -26,7 +26,7 @@
 
               <li class="nav-item btn-rotate dropdown">
                 <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  {{Session::get('sct_admin')->first_name}}
+                  {{Session::get('sp_admin')->name}}
                   <p>
                     <span class="d-lg-none d-md-block">Some Actions</span>
                   </p>
@@ -50,7 +50,7 @@
           <div class="col-md-12">
             <div class="card">
               <div class="card-header">
-                <h4 class="card-title"> Tutors List <a href="{{url('dashboard/tutor/add')}}" style="float:right;font-size: 15px;font-size: 12px; color:white;" type="button" class="btn btn-md btn-primary">Add Tutor</a></h4>
+                <!-- <h4 class="card-title"> Clients List <a href="{{url('dashboard/admin/add')}}" style="float:right;font-size: 15px;font-size: 12px; color:white;" type="button" class="btn btn-md btn-primary">Add Customer</a></h4> -->
               </div>
 
               <div class="card-body">
@@ -66,27 +66,44 @@
                   <table class="table">
                     <thead class=" text-primary">
                       <th>Name</th>
-                      <!-- <th>Role</th> -->
-                      <th>Email</th>
-                      <th class="text-right">Action</th>
+                      <th colspan="2">Email</th>
+                      <th>Phone</th>
+                      <th>Company</th>
+                      <th>State</th>
+                      <th>Additional State</th>
+                      <th>Business Structure</th>
+                      <th>Primay Product/Service</th>
+                      <th>Bookkeeping</th>
+                      <th>Prior Year Business Return</th>
+                      <th>Other</th>
+                      <th>About Us</th>
+                      <!-- <th class="text-right">Action</th> -->
                     </thead>
                     <tbody>
-                    @foreach($all_tutor as $tutor)
+                    @foreach($all_quotes as $quote)
                       <tr>
-                        <td> {{$tutor->first_name}} {{$tutor->last_name}}</td>
-                        <!-- <td> {{$tutor->role}}</td> -->
-                        <td> {{$tutor->email}}</td>
-                        <td class="text-right">
-                          <a href="{{url('/dashboard/tutor/edit/'.$tutor->id)}}" data-toggle="tooltip" data-original-title="Update"><i class="fa fa-edit text-primary"></i></a>
-                          <!-- <i class="fa fa-eye text-success"></i> -->
-                          <a href="javascript:0;" onclick="deleteEmployer('{{ $tutor->id }}')"> <i class="fa fa-trash text-danger"></i> </a>
-                        </td>
+                        <td> {{$quote->first_name}} {{$quote->last_name}}</td>
+                        <td colspan="2"> {{$quote->email}}</td>
+                        <td> {{$quote->phone}}</td>
+                        <td> {{$quote->company_name}}</td>
+                        <td> {{$quote->state}}</td>
+                        <td> {{$quote->additional_state}}</td>
+                        <td> {{$quote->business_structure}}</td>
+                        <td> {{$quote->primary_product}}</td>
+                        <td> {{$quote->bookkeeping_system}}</td>
+                        <td> {{$quote->prior_business_return}}</td>
+                        <td> {{$quote->other}}</td>
+                        <td> {{$quote->about_us}}</td>
+                        <!-- <td class="text-right">
+                          <a href="{{url('/dashboard/customer/edit/'.$quote->quote_id)}}" data-toggle="tooltip" data-original-title="Update"><i class="fa fa-edit text-primary"></i></a>
+                          <a href="javascript:0;" onclick="deleteEmployer('{{ $quote->quote_id }}')"> <i class="fa fa-trash text-danger"></i> </a>
+                        </td> -->
                       </tr>
                       @endforeach
 
                     </tbody>
                   </table>
-                  {{$all_tutor->render()}}
+                  {{$all_quotes->render()}}
                 </div>
               </div>
             </div>
@@ -110,10 +127,10 @@
                       <h3>Are you sure?</h3>
                       <p>You will not be able to undo this action.</p>
                       <div class="m-t-lg">
-                          <form method="post" action="{{ url('dashboard/tutor/delete') }}">
+                          <form method="post" action="{{ url('dashboard/customer/delete') }}">
                               <input type="hidden" name="_method" value="delete">
                               <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                              <input type="hidden" name="tutor_id" class="actionId">
+                              <input type="hidden" name="customer_id" class="actionId">
                               <button class="btn btn-danger" type="submit">Continue</button>
                               <button class="btn btn-default" data-dismiss="modal" type="button">Cancel</button>
                           </form>

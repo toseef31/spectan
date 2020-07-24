@@ -18,7 +18,11 @@ Route::group(['prefix' => 'spectan'], function () {
 Route::get('/blog','frontend\HomeController@blogs');
 Route::get('/blog-details/{id}','frontend\HomeController@blogDetails');
 Route::post('/contactUs','frontend\HomeController@contactUs');
-
+Route::get('/faq','frontend\HomeController@FAQs');
+Route::post('/businees_quote','frontend\HomeController@BusinessQuote');
+// Route::get('/faq', function () {
+//   return view('frontend.faq');
+// });
 Route::get('/personal-returns', function () {
     return view('frontend.personal-returns');
 });
@@ -31,9 +35,7 @@ Route::get('/business-return-quote', function () {
 Route::get('/individual', function () {
     return view('frontend.individual');
 });
-Route::get('/faq', function () {
-  return view('frontend.faq');
-});
+
 Route::get('/contact-us', function () {
     return view('frontend.contact-us');
 });
@@ -77,5 +79,11 @@ Route::get('/blog/create', 'frontend\BlogController@create');
 Route::get('/blog/edit/{id}', 'frontend\BlogController@edit');
 Route::delete('/blog/delete', 'frontend\BlogController@destroy');
 Route::post('/blog/store', 'frontend\BlogController@store');
+////////////////// Customer Care ////////////////////
+Route::get('/view_messages', 'Admin\AdminController@view_messages');
+Route::delete('/message/delete', 'Admin\AdminController@deleteMessage');
+Route::match(['get','post'],'/FAQ','Admin\AdminController@addEditFAQ');
+Route::get('/view_business_return_quote', 'Admin\AdminController@view_business_return_quote');
+
  });
 });

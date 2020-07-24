@@ -67,7 +67,7 @@
 						</div>
 						<div class="col-sm-12">
 							<div class="form-group">
-								<input class="form-control valid" name="email" id="phone" type="phone" onfocus="this.placeholder = ''" onblur="this.placeholder = ' Phone Number'" placeholder="Phone Number" required>
+								<input class="form-control valid" name="phone" id="phone" type="phone" onfocus="this.placeholder = ''" onblur="this.placeholder = ' Phone Number'" placeholder="Phone Number" required>
 							</div>
 						</div>
 						<div class="col-12">

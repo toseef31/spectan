@@ -13,7 +13,7 @@
                 <span class="navbar-toggler-bar bar3"></span>
               </button>
             </div>
-            <a class="navbar-brand" href="#pablo">Agreements List</a>
+            <a class="navbar-brand" href="#pablo">Message List</a>
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-bar navbar-kebab"></span>
@@ -26,7 +26,7 @@
 
               <li class="nav-item btn-rotate dropdown">
                 <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  {{Session::get('sct_admin')->first_name}}
+                  {{Session::get('sp_admin')->name}}
                   <p>
                     <span class="d-lg-none d-md-block">Some Actions</span>
                   </p>
@@ -50,9 +50,8 @@
           <div class="col-md-12">
             <div class="card">
               <div class="card-header">
-                <!-- <h4 class="card-title"> Clients List <a href="{{url('dashboard/admin/add')}}" style="float:right;font-size: 15px;font-size: 12px; color:white;" type="button" class="btn btn-md btn-primary">Add Customer</a></h4> -->
+                <h4 class="card-title"> Messages List </h4>
               </div>
-
               <div class="card-body">
                 <div class="table-responsive">
                   @if(session()->has('message'))
@@ -65,33 +64,28 @@
                   @endif
                   <table class="table">
                     <thead class=" text-primary">
-                      <th>Agreement Name</th>
-                      <th>User Name</th>
-                      <th>Role</th>
-                      <th>Status</th>
-                      <th>Signed By</th>
-                      <th>Signed Date</th>
-                      <!-- <th class="text-right">Action</th> -->
+                      <th>Name</th>
+                      <th>Phone</th>
+                      <th>Email</th>
+                      <th colspan="2">Message</th>
+                      <th class="text-right">Action</th>
                     </thead>
                     <tbody>
-                    @foreach($signed_agreement as $agreement)
+                    @foreach($all_messages as $message)
                       <tr>
-                        <td> {{$agreement->aggreement_name}}</td>
-                        <td> {{SCT::GetUser($agreement->user_id)->first_name}} {{SCT::GetUser($agreement->user_id)->last_name}}</td>
-                        <td> {{SCT::GetUser($agreement->user_id)->role}}</td>
-                        <td> {{$agreement->status}}</td>
-                        <td> {{$agreement->user_name}}</td>
-                        <td> {{$agreement->date}}</td>
-                        <!-- <td class="text-right">
-                          <a href="{{url('/dashboard/customer/edit/'.$agreement->signed_id)}}" data-toggle="tooltip" data-original-title="Update"><i class="fa fa-edit text-primary"></i></a>
-                          <a href="javascript:0;" onclick="deleteEmployer('{{ $agreement->signed_id }}')"> <i class="fa fa-trash text-danger"></i> </a>
-                        </td> -->
+                        <td> {{$message->first_name}} {{$message->last_name}}</td>
+                        <td> {{$message->phone}}</td>
+                        <td> {{$message->email}}</td>
+                        <td colspan="2"> {{$message->message}}</td>
+                        <td class="text-center">
+                          <a href="javascript:0;" onclick="deleteEmployer('{{ $message->message_id }}')" style="padding-left:46px;"> <i class="fa fa-trash text-danger"></i> </a>
+                        </td>
                       </tr>
                       @endforeach
 
                     </tbody>
                   </table>
-                  {{$signed_agreement->render()}}
+                  {{$all_messages->render()}}
                 </div>
               </div>
             </div>
@@ -115,10 +109,10 @@
                       <h3>Are you sure?</h3>
                       <p>You will not be able to undo this action.</p>
                       <div class="m-t-lg">
-                          <form method="post" action="{{ url('dashboard/customer/delete') }}">
+                          <form method="post" action="{{ url('dashboard/message/delete') }}">
                               <input type="hidden" name="_method" value="delete">
                               <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                              <input type="hidden" name="customer_id" class="actionId">
+                              <input type="hidden" name="message_id" class="actionId">
                               <button class="btn btn-danger" type="submit">Continue</button>
                               <button class="btn btn-default" data-dismiss="modal" type="button">Cancel</button>
                           </form>

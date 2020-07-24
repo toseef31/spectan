@@ -25,11 +25,12 @@
         <p class="mb-50 text-center">Business returns are tricky. They vary in complexity depending on the size of the business, the industry, the number of partners, the amount of transactions, the bookkeeping system, etc. For this reason, we do not provide instant quotes for corporate returns. Fill in the form below and we will get back to you with a quote.</p>
       </div>
       <div class="col-lg-8 offset-lg-2">
-        <form class="form-contact contact_form" action="contact_process.php" method="post" id="contactForm" novalidate="novalidate">
+        <form class="form-contact contact_form" action="{{url('spectan/businees_quote')}}" method="post" id="contactForm2">
+          {{csrf_field()}}
           <div class="row">
             <div class="col-sm-6">
               <div class="form-group">
-                <input class="form-control valid" name="first_name" id="first_name" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'First Name'" placeholder="First Name" required="required">
+                <input class="form-control valid" name="first_name" id="first_name" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'First Name'" placeholder="First Name" required>
               </div>
             </div>
             <div class="col-sm-6">
@@ -39,12 +40,12 @@
             </div>
             <div class="col-sm-12">
               <div class="form-group">
-                <input class="form-control valid" name="phone" id="phone" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = ' Company Name'" placeholder="Company Name">
+                <input class="form-control valid" name="company_name" id="company_name" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = ' Company Name'" placeholder="Company Name" required>
               </div>
             </div>
             <div class="col-12">
               <div class="form-group">
-                <select name="states" class="form-control" required="required">
+                <select name="state" class="form-control" required>
                   <option value="">Select State of Incorporation</option>
                   <option value="AL">Alabama</option>
                   <option value="AK">Alaska</option>
@@ -102,7 +103,7 @@
             </div>
             <div class="col-12">
               <div class="form-group">
-                <select name="states" class="form-control" required="required">
+                <select name="additional_state" class="form-control">
                   <option value="">Select Additional State Return</option>
                   <option value="AL">Alabama</option>
                   <option value="AK">Alaska</option>
@@ -160,7 +161,7 @@
             </div>
             <div class="col-12">
               <div class="form-group">
-                <select name="states" class="form-control" required="required">
+                <select name="business_structure" class="form-control" required>
                   <option value="">Select Business Structure for Tax Purposes</option>
                   <option value="Sole Proprietorship">Sole Proprietorship</option>
                   <option value="Single-Member LLC">Single-Member LLC</option>
@@ -174,37 +175,37 @@
             </div>
             <div class="col-sm-12">
               <div class="form-group">
-                <input class="form-control valid" name="" id="" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = ' Primary Product or Service'" placeholder="Primary Product or Service">
+                <input class="form-control valid" name="primary_product" id="primary_product" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = ' Primary Product or Service'" placeholder="Primary Product or Service">
               </div>
             </div>
             <div class="col-sm-12">
               <div class="form-group">
-                <input class="form-control valid" name="" id="" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Approximate Yearly Revenue'" placeholder="Approximate Yearly Revenue">
+                <input class="form-control valid" name="yearly_revenue" id="yearly_revenue" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Approximate Yearly Revenue'" placeholder="Approximate Yearly Revenue">
               </div>
             </div>
             <div class="col-sm-12">
               <div class="form-group">
-                <input class="form-control valid" name="" id="" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Which bookkeeping system do you use?'" placeholder="Which bookkeeping system do you use?">
+                <input class="form-control valid" name="bookkeeping_system" id="bookkeeping_system" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Which bookkeeping system do you use?'" placeholder="Which bookkeeping system do you use?" required>
               </div>
             </div>
             <div class="col-sm-12">
               <div class="form-group">
-                <input class="form-control valid" name="" id="" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Do you have a copy of your prior year business return?'" placeholder="Do you have a copy of your prior year business return?">
+                <input class="form-control valid" name="prior_business_return" id="prior_business_return" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Do you have a copy of your prior year business return?'" placeholder="Do you have a copy of your prior year business return?">
               </div>
             </div>
             <div class="col-sm-12">
               <div class="form-group">
-                <input class="form-control valid" name="" id="" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Anything you would like to mention?'" placeholder="Anything you would like to mention?">
+                <input class="form-control valid" name="other" id="other" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Anything you would like to mention?'" placeholder="Anything you would like to mention?">
               </div>
             </div>
             <div class="col-sm-12">
               <div class="form-group">
-                <input class="form-control valid" name="" id="" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'How did you hear about us?'" placeholder="How did you hear about us?">
+                <input class="form-control valid" name="about_us" id="about_us" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'How did you hear about us?'" placeholder="How did you hear about us?">
               </div>
             </div>
             <div class="col-sm-12">
               <div class="form-group">
-                <input class="form-control valid" name="email" id="email" type="email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter email address'" placeholder="Email">
+                <input class="form-control valid" name="email" id="email" type="email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter email address'" placeholder="Email" required>
               </div>
             </div>
             <div class="col-sm-12">

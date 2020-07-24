@@ -36,12 +36,44 @@ class HomeController extends Controller
 
     public function contactUs(Request $request)
     {
-      dd($request->all());
-       return view('frontend.blog-details',compact('blog','recent_blogs'));
+      // dd($request->all());
+      $input['first_name'] = $request->input('first_name');
+      $input['last_name'] = $request->input('last_name');
+      $input['email'] = $request->input('email');
+      $input['phone'] = $request->input('phone');
+      $input['message'] = $request->input('message');
+      $message = DB::table('sp_contact_us')->insert($input);
+      return redirect('/');
 
     }
 
+    public function FAQs()
+    {
+      $faq = DB::table('sp_faqs')->first();
+      return view('frontend.faq',compact('faq'));
+    }
 
+    public function BusinessQuote(Request $request)
+    {
+      // dd($request->all());
+      $input['first_name'] = $request->input('first_name');
+      $input['last_name'] = $request->input('last_name');
+      $input['email'] = $request->input('email');
+      $input['phone'] = $request->input('phone');
+      $input['company_name'] = $request->input('company_name');
+      $input['state'] = $request->input('state');
+      $input['additional_state'] = $request->input('additional_state');
+      $input['business_structure'] = $request->input('business_structure');
+      $input['primary_product'] = $request->input('primary_product');
+      $input['yearly_revenue'] = $request->input('yearly_revenue');
+      $input['bookkeeping_system'] = $request->input('bookkeeping_system');
+      $input['prior_business_return'] = $request->input('prior_business_return');
+      $input['other'] = $request->input('other');
+      $input['about_us'] = $request->input('about_us');
+      $message = DB::table('sp_business_return_quote')->insert($input);
+      return redirect('/');
+
+    }
 
 
     /**

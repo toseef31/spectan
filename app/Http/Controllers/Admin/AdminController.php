@@ -424,83 +424,29 @@ class AdminController extends Controller
        return view('admin.view_students',compact('all_client','all_student','type'));
     }
 
-    public function addEditStudent(Request $request){
-      // dd($request->all());
-      $studentId = 0;
-        $rPath = $request->segment(3);
-        if($request->isMethod('post')){
-            $studentId = $request->input('student_id');
-            $this->validate($request, [
-                'student_name' => 'required|max:100',
-                'college' => 'required',
-                'subject' => 'required',
-                'grade' => 'required',
-                // 'email' => 'required|email|max:255',
-            ],[
-              'college.required' =>'School/College field is required',
-              'subject.required' =>'Subject field is required',
-              'grade.required' =>'Grade/Level field is required',
-            ]);
 
-            $student =new Student;
-            $student->student_name = $request->input('student_name');
-            $student->user_id = $request->input('user_id');
-            $student->email = $request->input('email');
-            $student->college = $request->input('college');
-            $student->grade = $request->input('grade');
-            $student->subject = $request->input('subject');
-            $student->goal = $request->input('goal');
-            if($studentId == ''){
-                $studentId = $student->save();
-                $sMsg = 'New Student Added';
-            }else{
-              $student='';
-              $student = Student::findOrFail($studentId);
-              $student->student_name = $request->input('student_name');
-              $student->user_id = $request->input('user_id');
-              $student->email = $request->input('email');
-              $student->college = $request->input('college');
-              $student->grade = $request->input('grade');
-              $student->subject = $request->input('subject');
-              $student->goal = $request->input('goal');
-              $student->save();
-                $sMsg = 'Student Updated';
-            }
-            $request->session()->flash('alert',['message' => $sMsg, 'type' => 'success']);
-            return redirect('dashboard/view_students');
-        }else{
-            $student = array();
-            $studentId = '0';
-            if($rPath == 'edit'){
-                $studentId = $request->segment(4);
-                $student = Student::findOrFail($studentId);
-                // dd($student);
-                if($student == null){
-                    $request->session()->flash('alert',['message' => 'No Record Found', 'type' => 'danger']);
-                    return redirect('dashboard/view_students');
-                }
-                // dd($student);
-            }
-            $users = User::where('role','customer')->orderBy('first_name','asc')->get();
-            return view('admin.add-edit-students',compact('student','rPath','studentId','users'));
-        }
+
+
+
+    public function view_messages(Request $request)
+    {
+      $all_messages = DB::table('sp_contact_us')->orderBy('message_id','desc')->paginate(15);
+       return view('admin.view_messages',compact('all_messages'));
+    }
+    public function view_business_return_quote(Request $request)
+    {
+      $all_quotes = DB::table('sp_business_return_quote')->orderBy('quote_id','desc')->paginate(15);
+       return view('admin.view_business_quotes',compact('all_quotes'));
     }
 
-    public function deleteStudent(Request $request)
+    public function deleteMessage(Request $request)
     {
       if($request->isMethod('delete')){
-        $student_id = trim($request->input('student_id'));
-        $student = Student::find($student_id);
-        $student->delete();
-        $request->session()->flash('message' , 'Student Deleted Successfully');
+        $message_id = trim($request->input('message_id'));
+        $message = DB::table('sp_contact_us')->where('message_id',$message_id)->delete();
+        $request->session()->flash('message' , 'Message Deleted Successfully');
       }
       return redirect(url()->previous());
-    }
-
-    public function all_tutors(Request $request)
-    {
-      $all_tutor = User::where('role','<>','customer')->orderBy('id','desc')->paginate(15);
-       return view('admin.view_teachers',compact('all_tutor'));
     }
 
     public function addEditTutor(Request $request){
@@ -583,16 +529,7 @@ class AdminController extends Controller
         }
     }
 
-    public function deleteTutor(Request $request)
-    {
-      if($request->isMethod('delete')){
-        $tutor_id = trim($request->input('tutor_id'));
-        $tutor = User::find($tutor_id);
-        $tutor->delete();
-        $request->session()->flash('message' , 'Tutor Deleted Successfully');
-      }
-      return redirect(url()->previous());
-    }
+
 
     public function all_agreement(Request $request)
     {
@@ -748,10 +685,10 @@ class AdminController extends Controller
           $input ['description'] = $request->input('description');
 
             if($faqId == ''){
-                $faqId = DB::table('faqs')->insertGetId($input);
+                $faqId = DB::table('sp_faqs')->insertGetId($input);
                 $sMsg = 'New FAQ Added';
             }else{
-              $faqId = DB::table('faqs')->where('faq_id',$faqId)->update($input);
+              $faqId = DB::table('sp_faqs')->where('faq_id',$faqId)->update($input);
 
                 $sMsg = 'FAQ Updated';
             }
@@ -760,7 +697,7 @@ class AdminController extends Controller
         }else{
             $faq = array();
             $faqId = '0';
-            $faq = DB::table('faqs')->first();
+            $faq = DB::table('sp_faqs')->first();
             // dd($faq);
             return view('admin.add-edit-faqs',compact('faq','faqId'));
         }
