@@ -11,7 +11,7 @@ class HomeController extends Controller
 
     public function index(Request $request)
     {
-      $blogs = DB::table('sp_blogs')->orderBy('created_at','desc')->limit(3)->get();
+      $blogs = DB::table('sp_blogs')->orderBy('created_at','desc')->get();
       // dd($blogs);
       return view('frontend.index',compact('blogs'));
     }

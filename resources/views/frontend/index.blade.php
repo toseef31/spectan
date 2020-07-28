@@ -1,6 +1,18 @@
 @extends('frontend.layouts.master')
 @section('title', 'Spectan LLC')
 @section('styling')
+<style media="screen">
+	.case_heading span h2 {
+		color: #919191;
+		font-size: 14px;
+		font-weight: 400;
+	}
+	.case_heading span p {
+		color: #919191;
+		font-size: 13px;
+		font-weight: 400;
+	}
+</style>
 @endsection
 @section('content')
 <!-- slider_area_start -->
@@ -73,16 +85,19 @@
 			<div class="row">
 				<div class="col-xl-12">
 					<div class="case_active owl-carousel">
+						@foreach($blogs as $blog)
 						<div class="single_case">
 							<div class="case_thumb">
-								<img src="{{asset('/frontend-assets/img/case/1.png')}}" alt="">
+								<a href="{{url('/spectan/blog-details/'.$blog->blog_id)}}"><img src="{{asset('/frontend-assets/dashboard/post/'.$blog->blog_image)}}" style="height:330px;" alt=""></a>
 							</div>
 							<div class="case_heading">
-								<span>Professional Services</span>
-								<h3><a href="#">Accounting services for a wide variety of client</a></h3>
+								<!-- <span>Need Assistance?</span> -->
+								<h3><a href="{{url('/spectan/blog-details/'.$blog->blog_id)}}">{{$blog->title}}</a></h3>
+								<span>{!! str_limit($blog->body,30) !!}</span>
 							</div>
 						</div>
-						<div class="single_case">
+						@endforeach
+						<!-- <div class="single_case">
 							<div class="case_thumb">
 								<img src="{{asset('/frontend-assets/img/case/2.png')}}" alt="">
 							</div>
@@ -90,8 +105,8 @@
 								<span>Dedicated Professional</span>
 								<h3><a href="#">Accounting & tax preparartion services to keep your business on track</a></h3>
 							</div>
-						</div>
-						<div class="single_case">
+						</div> -->
+						<!-- <div class="single_case">
 							<div class="case_thumb">
 								<img src="{{asset('/frontend-assets/img/case/3.png')}}" alt="">
 							</div>
@@ -117,7 +132,7 @@
 								<span>Contact Us From Any Where</span>
 								<h3><a href="#">Lets start making the most of your money</a></h3>
 							</div>
-						</div>
+						</div> -->
 					</div>
 				</div>
 			</div>
