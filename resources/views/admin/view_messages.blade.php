@@ -78,7 +78,7 @@
                         <td> {{$message->email}}</td>
                         <td colspan="2"> {{$message->message}}</td>
                         <td class="text-center">
-                          <a href="javascript:0;" onclick="deleteEmployer('{{ $message->message_id }}')" style="padding-left:46px;"> <i class="fa fa-trash text-danger"></i> </a>
+                          <a href="javascript:0;" onclick="deleteEmployer('{{ $message->message_id }}')" class="btn btn-danger" style="padding-left:46px;"> Delete </a>
                         </td>
                       </tr>
                       @endforeach
