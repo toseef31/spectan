@@ -161,10 +161,6 @@
                           <td style="border-left: 1px solid #ccc;">{{$quote->other}}</td>
                         </tr>
                         <tr>
-                          <td>Email</td>
-                          <td style="border-left: 1px solid #ccc;">{{$quote->email}}</td>
-                        </tr>
-                        <tr>
                           <td>About Us</td>
                           <td style="border-left: 1px solid #ccc;">{{$quote->about_us}}</td>
                         </tr>
