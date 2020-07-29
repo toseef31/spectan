@@ -84,6 +84,8 @@ Route::get('/view_messages', 'Admin\AdminController@view_messages');
 Route::delete('/message/delete', 'Admin\AdminController@deleteMessage');
 Route::match(['get','post'],'/FAQ','Admin\AdminController@addEditFAQ');
 Route::get('/view_business_return_quote', 'Admin\AdminController@view_business_return_quote');
+Route::get('/view_business_request_details/{id}', 'Admin\AdminController@view_business_request_details');
+Route::delete('/delete_quote_request', 'Admin\AdminController@deleteQuoteRequest');
 
  });
 });

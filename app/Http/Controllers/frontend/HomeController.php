@@ -5,6 +5,7 @@ namespace App\Http\Controllers\frontend;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use DB;
+use Mail;
 
 class HomeController extends Controller
 {
@@ -70,7 +71,20 @@ class HomeController extends Controller
       $input['prior_business_return'] = $request->input('prior_business_return');
       $input['other'] = $request->input('other');
       $input['about_us'] = $request->input('about_us');
-      $message = DB::table('sp_business_return_quote')->insert($input);
+      $message = DB::table('sp_business_return_quote')->insertGetId($input);
+      $quote = DB::table('sp_business_return_quote')->where('quote_id',$message)->first();
+      $admins = DB::table('sp_admin')->get();
+      foreach ($admins as $admin) {
+        $toemail=$admin->email;
+          Mail::send('mail.business_quote_email',['admin' =>$admin, 'quote' => $quote],
+          function ($message) use ($toemail)
+          {
+
+            $message->subject('Spectan.com - Request For Business Return Quote');
+            $message->from('admin@Spectan.com', 'Spectan');
+            $message->to($toemail);
+          });
+      }
       return redirect('/');
 
     }

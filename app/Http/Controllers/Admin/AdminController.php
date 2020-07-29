@@ -439,6 +439,22 @@ class AdminController extends Controller
        return view('admin.view_business_quotes',compact('all_quotes'));
     }
 
+    public function view_business_request_details(Request $request, $id)
+    {
+      $quote = DB::table('sp_business_return_quote')->where('quote_id',$id)->first();
+       return view('admin.view_businss_request_details',compact('quote'));
+    }
+
+    public function deleteQuoteRequest(Request $request)
+    {
+      if($request->isMethod('delete')){
+        $quote_id = trim($request->input('quote_id'));
+        $message = DB::table('sp_business_return_quote')->where('quote_id',$quote_id)->delete();
+        $request->session()->flash('message' , 'Business Quote Request Deleted Successfully');
+      }
+      return redirect(url()->previous());
+    }
+
     public function deleteMessage(Request $request)
     {
       if($request->isMethod('delete')){

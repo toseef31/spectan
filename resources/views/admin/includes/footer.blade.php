@@ -16,7 +16,7 @@
       </nav>
       <div class="credits ml-auto">
         <span class="copyright">
-          Copyright © 2020 All Rights Reserved by Smart Cookie Tutors
+          Copyright © 2020 All Rights Reserved by Spectan
         </span>
       </div>
     </div>
