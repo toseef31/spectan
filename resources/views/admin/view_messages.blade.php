@@ -68,7 +68,7 @@
                       <th>Phone</th>
                       <th>Email</th>
                       <th colspan="2">Message</th>
-                      <th class="text-right">Action</th>
+                      <th class="text-center">Action</th>
                     </thead>
                     <tbody>
                     @foreach($all_messages as $message)
@@ -78,7 +78,7 @@
                         <td> {{$message->email}}</td>
                         <td colspan="2"> {{$message->message}}</td>
                         <td class="text-center">
-                          <a href="javascript:0;" onclick="deleteEmployer('{{ $message->message_id }}')" class="btn btn-danger" style="padding-left:46px;"> Delete </a>
+                          <a href="javascript:0;" onclick="deleteEmployer('{{ $message->message_id }}')" class="btn btn-danger" style=""> Delete </a>
                         </td>
                       </tr>
                       @endforeach
